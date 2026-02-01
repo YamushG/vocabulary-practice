@@ -1,11 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocabulary Practice App</title>
+    <title>VocabQuest - Learn & Level Up! 🎮</title>
     <style>
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151a30;
+            --bg-tertiary: #1e2438;
+            --bg-elevated: #252b43;
+            --accent-primary: #667eea;
+            --accent-success: #48bb78;
+            --accent-danger: #f56565;
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --border-color: #2d3748;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --transition-base: 250ms ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +33,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background: linear-gradient(135deg, #0a0e27 0%, #151a30 50%, #1e2438 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -22,11 +41,11 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: #1a2332;
+            background: #151a30;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             overflow: hidden;
-            border: 1px solid #2d3e50;
+            border: 1px solid #252b43;
         }
 
         .header {
@@ -70,7 +89,7 @@
 
         .content {
             padding: 40px;
-            background: #1a2332;
+            background: #151a30;
             min-height: 500px;
         }
 
@@ -105,7 +124,7 @@
         }
 
         .set-card {
-            background: linear-gradient(135deg, #243447 0%, #2d3e50 100%);
+            background: linear-gradient(135deg, #1e2438 0%, #252b43 100%);
             border: 2px solid #2a5298;
             border-radius: 12px;
             padding: 25px;
@@ -155,7 +174,7 @@
         }
 
         .btn-secondary {
-            background: #243447;
+            background: #1e2438;
             color: #90caf9;
             border: 2px solid #2a5298;
         }
@@ -190,7 +209,7 @@
         }
 
         .modal-content {
-            background: #1a2332;
+            background: #151a30;
             border: 2px solid #2a5298;
             border-radius: 16px;
             padding: 30px;
@@ -224,7 +243,7 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            background: #243447;
+            background: #1e2438;
             border: 2px solid #2a5298;
             border-radius: 8px;
             color: #e3f2fd;
@@ -243,7 +262,7 @@
         }
 
         .word-item {
-            background: #243447;
+            background: #1e2438;
             border: 2px solid #2a5298;
             border-radius: 8px;
             padding: 15px;
@@ -286,7 +305,7 @@
 
         /* Practice Session Styles */
         .session-header {
-            background: #243447;
+            background: #1e2438;
             border: 2px solid #2a5298;
             border-radius: 12px;
             padding: 20px;
@@ -329,7 +348,7 @@
         }
 
         .question-card {
-            background: linear-gradient(135deg, #243447 0%, #2d3e50 100%);
+            background: linear-gradient(135deg, #1e2438 0%, #252b43 100%);
             border: 2px solid #2a5298;
             border-radius: 15px;
             padding: 40px;
@@ -360,7 +379,7 @@
 
         .option-btn {
             padding: 20px;
-            background: #243447;
+            background: #1e2438;
             border: 2px solid #2a5298;
             border-radius: 10px;
             cursor: pointer;
@@ -373,7 +392,7 @@
 
         .option-btn:hover {
             border-color: #64b5f6;
-            background: #2d3e50;
+            background: #252b43;
             transform: translateX(5px);
         }
 
@@ -407,7 +426,7 @@
             border: 3px solid #2a5298;
             border-radius: 10px;
             text-align: center;
-            background: #243447;
+            background: #1e2438;
             color: #e3f2fd;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
@@ -460,7 +479,7 @@
         }
 
         .stat-box {
-            background: linear-gradient(135deg, #243447 0%, #2d3e50 100%);
+            background: linear-gradient(135deg, #1e2438 0%, #252b43 100%);
             padding: 20px 30px;
             border-radius: 10px;
             text-align: center;
@@ -480,7 +499,7 @@
 
         /* Settings Styles */
         .settings-section {
-            background: #243447;
+            background: #1e2438;
             border: 2px solid #2a5298;
             border-radius: 12px;
             padding: 25px;
@@ -512,7 +531,7 @@
 
         .setting-control select {
             padding: 8px 15px;
-            background: #1a2332;
+            background: #151a30;
             border: 2px solid #2a5298;
             border-radius: 8px;
             color: #e3f2fd;
@@ -554,13 +573,83 @@
                 font-size: 1.8em;
             }
         }
-    </style>
+    
+        .modal {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .toggle-group {
+            background: #1e2438;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #2d3748;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .celebration-icon {
+            animation: celebrate 1s ease;
+        }
+
+        @keyframes celebrate {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.2) rotate(-10deg); }
+            75% { transform: scale(1.2) rotate(10deg); }
+        }
+</style>
 </head>
 <body>
     <div class="container">
         <div class="header" id="appHeader">
-            <h1>📚 Vocabulary Practice</h1>
-            <p>Master your words with intelligent learning</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 style="font-size: 2rem; margin-bottom: 5px;">🎮 VocabQuest</h1>
+                    <p style="opacity: 0.9;">Level up while learning!</p>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                    <div class="stat-item" style="display: flex; align-items: center; gap: 8px; background: #1e2438; padding: 8px 16px; border-radius: 20px; border: 1px solid #2d3748;">
+                        <span style="font-size: 1.2rem;">⚡</span>
+                        <div>
+                            <div style="font-size: 0.7rem; color: #a0aec0; text-transform: uppercase;">Level</div>
+                            <div style="font-size: 1.1rem; font-weight: 700; color: #667eea;" id="levelDisplay">1</div>
+                        </div>
+                    </div>
+                    <div class="stat-item" style="display: flex; align-items: center; gap: 8px; background: #1e2438; padding: 8px 16px; border-radius: 20px; border: 1px solid #2d3748;">
+                        <span style="font-size: 1.2rem;">🔥</span>
+                        <div>
+                            <div style="font-size: 0.7rem; color: #a0aec0; text-transform: uppercase;">Streak</div>
+                            <div style="font-size: 1.1rem; font-weight: 700; color: #f6ad55;" id="streakDisplay">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-item" style="display: flex; align-items: center; gap: 8px; background: #1e2438; padding: 8px 16px; border-radius: 20px; border: 1px solid #2d3748;">
+                        <span style="font-size: 1.2rem;">✨</span>
+                        <div>
+                            <div style="font-size: 0.7rem; color: #a0aec0; text-transform: uppercase;">Today</div>
+                            <div style="font-size: 1.1rem; font-weight: 700; color: #48bb78;" id="todayXPDisplay">0</div>
+                        </div>
+                    </div>
+                    <button class="icon-btn" onclick="openSettings()" title="Settings" style="width: 40px; height: 40px; border-radius: 10px; border: 1px solid #2d3748; background: #1e2438; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                        ⚙️
+                    </button>
+                </div>
+            </div>
+            <div style="margin-top: 15px; background: #1e2438; padding: 12px; border-radius: 10px; border: 1px solid #2d3748;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <div style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">
+                        Level <span id="levelDisplay2">1</span>
+                    </div>
+                    <div style="font-size: 0.85rem; color: #a0aec0;" id="xpText">0/100 XP</div>
+                </div>
+                <div style="height: 8px; background: #0a0e27; border-radius: 10px; overflow: hidden;">
+                    <div id="xpProgressBar" style="height: 100%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 0%; transition: width 0.5s ease; border-radius: 10px;"></div>
+                </div>
+            </div>
         </div>
 
         <div class="content" id="appContent">
@@ -1483,6 +1572,140 @@
             voice: 'default'
         };
 
+        // Gamification System
+        let gameData = {
+            xp: 0,
+            level: 1,
+            streak: 0,
+            lastPracticeDate: null,
+            totalWordsLearned: 0,
+            totalSessions: 0,
+            achievements: [],
+            dailyGoal: 50, // XP per day
+            todayXP: 0
+        };
+
+        // Load game data from localStorage
+        function loadGameData() {
+            const saved = localStorage.getItem('vocabquest_gamedata');
+            if (saved) {
+                gameData = {...gameData, ...JSON.parse(saved)};
+                updateDailyStreak();
+            }
+        }
+
+        // Save game data
+        function saveGameData() {
+            localStorage.setItem('vocabquest_gamedata', JSON.stringify(gameData));
+        }
+
+        // Calculate level from XP
+        function calculateLevel() {
+            return Math.floor(gameData.xp / 100) + 1;
+        }
+
+        // Get XP needed for next level
+        function getXPForNextLevel() {
+            return gameData.level * 100;
+        }
+
+        // Get current level progress
+        function getLevelProgress() {
+            const currentLevelXP = (gameData.level - 1) * 100;
+            const xpInCurrentLevel = gameData.xp - currentLevelXP;
+            return (xpInCurrentLevel / 100) * 100;
+        }
+
+        // Add XP
+        function addXP(amount) {
+            const oldLevel = gameData.level;
+            gameData.xp += amount;
+            gameData.todayXP += amount;
+            gameData.level = calculateLevel();
+            
+            if (gameData.level > oldLevel) {
+                showLevelUpAnimation();
+            }
+            
+            saveGameData();
+            updateGameUI();
+        }
+
+        // Update daily streak
+        function updateDailyStreak() {
+            const today = new Date().toDateString();
+            const lastDate = gameData.lastPracticeDate;
+            
+            if (!lastDate) {
+                gameData.streak = 1;
+            } else {
+                const last = new Date(lastDate);
+                const daysDiff = Math.floor((new Date() - last) / (1000 * 60 * 60 * 24));
+                
+                if (daysDiff === 0) {
+                    // Same day, keep streak
+                } else if (daysDiff === 1) {
+                    // Next day, increment streak
+                    gameData.streak++;
+                } else {
+                    // Streak broken
+                    gameData.streak = 1;
+                }
+            }
+            
+            gameData.lastPracticeDate = today;
+            
+            // Reset daily XP if new day
+            const savedDate = localStorage.getItem('vocabquest_lastdate');
+            if (savedDate !== today) {
+                gameData.todayXP = 0;
+                localStorage.setItem('vocabquest_lastdate', today);
+            }
+            
+            saveGameData();
+        }
+
+        // Show level up animation
+        function showLevelUpAnimation() {
+            // Simple celebration for now
+            playSound('victory');
+        }
+
+        // Update game UI elements
+        function updateGameUI() {
+            // Update XP bar
+            const xpBar = document.getElementById('xpProgressBar');
+            if (xpBar) {
+                xpBar.style.width = getLevelProgress() + '%';
+            }
+            
+            // Update level display
+            const levelDisplay = document.getElementById('levelDisplay');
+            if (levelDisplay) {
+                levelDisplay.textContent = gameData.level;
+            }
+            
+            // Update XP text
+            const xpText = document.getElementById('xpText');
+            if (xpText) {
+                const current = gameData.xp - ((gameData.level - 1) * 100);
+                xpText.textContent = `${current}/${getXPForNextLevel() - ((gameData.level - 1) * 100)} XP`;
+            }
+            
+            // Update streak
+            const streakDisplay = document.getElementById('streakDisplay');
+            if (streakDisplay) {
+                streakDisplay.textContent = gameData.streak;
+            }
+            
+            // Update today's XP
+            const todayXPDisplay = document.getElementById('todayXPDisplay');
+            if (todayXPDisplay) {
+                todayXPDisplay.textContent = gameData.todayXP;
+            }
+        }
+
+
         // Session State
         let sessionState = {
             setId: null,
@@ -1630,7 +1853,8 @@
         function renderSetsGrid() {
             const grid = document.getElementById('setsGrid');
             grid.innerHTML = practiceSets.map((set, index) => `
-                <div class="set-card" onclick="if(!event.target.closest('.set-card-actions')) startPractice(${index})">
+                <div class="set-card" onclick="if(!event.target.closest('.set-card-actions')) startPractice(${index})" style="position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2);"></div>
                     <h3>${set.name}</h3>
                     <p style="color: #90caf9;">${set.description || 'No description'}</p>
                     <div class="set-card-info">
@@ -1839,7 +2063,7 @@
                 
                 const content = document.getElementById('appContent');
                 content.innerHTML = `
-                    <div style="text-align: center; padding: 40px; background: #243447; border: 2px solid #64b5f6; border-radius: 12px; margin-bottom: 30px;">
+                    <div style="text-align: center; padding: 40px; background: #1e2438; border: 2px solid #64b5f6; border-radius: 12px; margin-bottom: 30px;">
                         <h2 style="color: #64b5f6; font-size: 2em; margin-bottom: 15px;">✍️ Great! Now let's recall!</h2>
                         <p style="color: #90caf9; font-size: 1.2em;">Now type the answer for each word</p>
                     </div>
@@ -1899,15 +2123,27 @@
             }
         }
 
-        function renderRecognitionQuestion(word) {
+                function renderRecognitionQuestion(word) {
             const answerArea = document.getElementById('answerArea');
             
-            // Helper function to calculate similarity between two strings
+            // CHECK IF THIS IS SET 2 (Der/Die/Das) - Set ID 1
+            if (sessionState.setId === 1) {
+                // SET 2: ALWAYS SHOW ONLY 3 OPTIONS - DER, DIE, DAS
+                answerArea.innerHTML = `
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="checkRecognition('der')">der</button>
+                        <button class="option-btn" onclick="checkRecognition('die')">die</button>
+                        <button class="option-btn" onclick="checkRecognition('das')">das</button>
+                    </div>
+                `;
+                return; // EXIT HERE - DO NOT GENERATE 4 OPTIONS
+            }
+            
+            // SET 1: Generate 4 options with similarity-based selection
             function calculateSimilarity(str1, str2) {
                 const s1 = str1.toLowerCase();
                 const s2 = str2.toLowerCase();
                 
-                // Character overlap score
                 let commonChars = 0;
                 const chars1 = new Set(s1.split(''));
                 const chars2 = new Set(s2.split(''));
@@ -1916,48 +2152,50 @@
                 });
                 const charScore = commonChars / Math.max(chars1.size, chars2.size);
                 
-                // Length similarity score
                 const lengthScore = 1 - Math.abs(s1.length - s2.length) / Math.max(s1.length, s2.length);
-                
-                // Starting character similarity
                 const startScore = s1[0] === s2[0] ? 1 : 0;
                 
-                // Combined score
                 return (charScore * 0.5) + (lengthScore * 0.3) + (startScore * 0.2);
             }
             
-            // Generate 3 wrong answers - prioritize similar ones to make it harder
             const allWords = practiceSets[sessionState.setId].words;
             const correctAnswer = word.definition;
             
-            const wrongAnswers = allWords
+            // Use Set to ensure NO DUPLICATES
+            const wrongAnswerSet = new Set();
+            
+            const similarWrongs = allWords
                 .filter(w => w.definition !== correctAnswer)
                 .map(w => ({
                     definition: w.definition,
                     similarity: calculateSimilarity(correctAnswer, w.definition)
                 }))
-                .sort((a, b) => b.similarity - a.similarity) // Most similar first
-                .slice(0, 3)
-                .map(w => w.definition);
+                .sort((a, b) => b.similarity - a.similarity);
             
-            // If we don't have enough similar options, add random ones
-            if (wrongAnswers.length < 3) {
+            for (const wrong of similarWrongs) {
+                if (wrongAnswerSet.size >= 3) break;
+                wrongAnswerSet.add(wrong.definition);
+            }
+            
+            if (wrongAnswerSet.size < 3) {
                 const remainingWords = allWords
-                    .filter(w => w.definition !== correctAnswer && !wrongAnswers.includes(w.definition))
+                    .filter(w => w.definition !== correctAnswer && !wrongAnswerSet.has(w.definition))
                     .sort(() => Math.random() - 0.5);
                 
-                while (wrongAnswers.length < 3 && remainingWords.length > 0) {
-                    wrongAnswers.push(remainingWords.shift().definition);
+                for (const w of remainingWords) {
+                    if (wrongAnswerSet.size >= 3) break;
+                    wrongAnswerSet.add(w.definition);
                 }
             }
             
+            const wrongAnswers = Array.from(wrongAnswerSet);
             const options = [...wrongAnswers, correctAnswer]
                 .sort(() => Math.random() - 0.5);
 
             answerArea.innerHTML = `
                 <div class="options-grid">
                     ${options.map(option => `
-                        <button class="option-btn" onclick="checkRecognition('${option.replace(/'/g, "\\'")}')">
+                        <button class="option-btn" onclick="checkRecognition('${option.replace(/'/g, "\'")}')">
                             ${option}
                         </button>
                     `).join('')}
@@ -2098,7 +2336,7 @@
 
             const content = document.getElementById('appContent');
             content.innerHTML = `
-                <div style="text-align: center; padding: 40px; background: #243447; border: 2px solid #ffa726; border-radius: 12px; margin-bottom: 30px;">
+                <div style="text-align: center; padding: 40px; background: #1e2438; border: 2px solid #ffa726; border-radius: 12px; margin-bottom: 30px;">
                     <h2 style="color: #ffa726; font-size: 2em; margin-bottom: 15px;">📝 Review Time!</h2>
                     <p style="color: #90caf9; font-size: 1.2em;">Let's review the words you missed</p>
                 </div>
@@ -2180,6 +2418,106 @@
                 confirmExitPractice();
             }
         });
+    
+        // Settings functions
+        function openSettings() {
+            document.getElementById('settingsModal').classList.add('active');
+            document.getElementById('soundToggle').checked = settings.soundEffects === 'on';
+            document.getElementById('dailyGoalInput').value = gameData.dailyGoal;
+            document.getElementById('statsXP').textContent = gameData.xp;
+            document.getElementById('statsWords').textContent = gameData.totalWordsLearned;
+            document.getElementById('statsSessions').textContent = gameData.totalSessions;
+            document.getElementById('statsStreak').textContent = gameData.streak + ' days';
+        }
+
+        function toggleSound() {
+            settings.soundEffects = document.getElementById('soundToggle').checked ? 'on' : 'off';
+            localStorage.setItem('vocab_settings', JSON.stringify(settings));
+        }
+
+        function saveSettings() {
+            gameData.dailyGoal = parseInt(document.getElementById('dailyGoalInput').value);
+            saveGameData();
+            closeModal('settingsModal');
+        }
+
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all progress? This cannot be undone!')) {
+                gameData = {
+                    xp: 0,
+                    level: 1,
+                    streak: 0,
+                    lastPracticeDate: null,
+                    totalWordsLearned: 0,
+                    totalSessions: 0,
+                    achievements: [],
+                    dailyGoal: 50,
+                    todayXP: 0
+                };
+                saveGameData();
+                updateGameUI();
+                closeModal('settingsModal');
+                alert('Progress reset successfully!');
+            }
+        }
+
     </script>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title">⚙️ Settings</div>
+                <button class="close-btn" onclick="closeModal('settingsModal')">✕</button>
+            </div>
+            
+            <div class="form-group">
+                <div class="toggle-group">
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 4px;">🔊 Sound Effects</div>
+                        <div style="font-size: 0.85rem; color: var(--text-secondary);">Play sounds during practice</div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="soundToggle" onchange="toggleSound()">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">🎯 Daily XP Goal</label>
+                <input type="number" class="form-input" id="dailyGoalInput" value="50" min="10" max="500" step="10">
+            </div>
+            
+            <div class="form-group">
+                <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 12px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-bottom: 12px; color: var(--text-primary);">📊 Your Stats</h3>
+                    <div style="display: grid; gap: 8px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: var(--text-secondary);">Total XP:</span>
+                            <span style="font-weight: 700; color: var(--accent-primary);" id="statsXP">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: var(--text-secondary);">Words Learned:</span>
+                            <span style="font-weight: 700; color: var(--accent-primary);" id="statsWords">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: var(--text-secondary);">Sessions Completed:</span>
+                            <span style="font-weight: 700; color: var(--accent-primary);" id="statsSessions">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: var(--text-secondary);">Current Streak:</span>
+                            <span style="font-weight: 700; color: var(--accent-warning);" id="statsStreak">0 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn btn-danger" onclick="resetProgress()">🔄 Reset Progress</button>
+                <button class="btn btn-primary" onclick="saveSettings()">💾 Save</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
